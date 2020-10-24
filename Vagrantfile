@@ -11,5 +11,6 @@ Vagrant.configure('2') do |config|
   config.vm.provider 'virtualbox' do |v|
     v.memory = ENV.fetch('RAILS_DEV_BOX_RAM', 2048).to_i
     v.cpus   = ENV.fetch('RAILS_DEV_BOX_CPUS', 2).to_i
+    v.customize [ "modifyvm", :id, "--uartmode1", "file", File::NULL ]
   end
 end
